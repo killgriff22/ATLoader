@@ -1,14 +1,13 @@
-import re
 import subprocess
 import platform
-import errno
 import os
 from sys import argv, stdout
 from termcolor import colored
-colors = ['red', 'red', 'green', 'green', 'blue',  'blue', ]
+import themeloader
+colors = ['red', 'red']
 
 my_system = platform
-logo = f"""
+logo = """
         ...          
     .uW8***88e.      
    d8*"     `"8N.    
@@ -49,7 +48,7 @@ def center(txt):
     center = ""
     for x in range(int(((int(len(topline))-2)-int(len(txt)))/2)):
         center += " "
-    return center
+    return center + txt + center
 
 
 def filler():
@@ -59,22 +58,35 @@ def filler():
     return fill
 
 
+def vcenter():
+    center = ""
+    if len(logosplt) > len(infosplt):
+        buffer = int((len(logosplt)-len(infosplt))/2)
+        for i in range(buffer):
+            center += " "
+        return center
+
+
 infopane = f"""
+{vcenter()}
 {topline}
-|{center("@Loader")}@Loader{center("@Loader")}|
-|{center("Version 1.0.0")}Version 1.0.0{center("Version 1.0.0")}|
-|{center(f"CPU : {platform.processor()}")}CPU : {platform.processor()}{center(f"CPU : {platform.processor()}")} |
-|{center(f"OS Release : {my_system.release()}")}OS Release : {my_system.release()}{center(f"OS Release : {my_system.release()}")}|
-|{center(f"Arch : {my_system.machine()}")}Arch : {my_system.machine()}{center(f"Arch : {my_system.machine()}")}|
-|{center(f"System : {my_system.system()}")}System : {my_system.system()}{center(f"System : {my_system.system()}")}|
-|{center(f"Node Name: {my_system.node()}")}Node Name: {my_system.node()}{center(f"Node Name: {my_system.node()}")}|
-|{filler()}|
-|{filler()}|
+|{center("@Loader")}|
+|{center("Version 1.0.0")}|
+|{center(f"CPU : {platform.processor()}")} |
+|{center(f"OS Release : {my_system.release()}")}|
+|{center(f"Arch : {my_system.machine()}")}|
+|{center(f"System : {my_system.system()}")}|
+|{center(f"Node Name: {my_system.node()}")}|
 |{filler()}|
 {bottomline}
+{vcenter()}
 """
 infosplt = infopane.splitlines()
 for index in range(len(logosplt)):
+    if len(logosplt) > len(infosplt):
+        buffer = int((len(logosplt)-len(infosplt)))
+        for i in range(buffer):
+            infosplt.append(" ")
     try:
         print(colored(logosplt[index], colors[counter]), end="")
         print(infosplt[index])
