@@ -1,7 +1,7 @@
 cd $ZSH
 git clone https://github.com/killgriff22/ATLoader
 cd ATLoader
-cp @themes/ $ZSH
+cp -r @themes/ $ZSH
 cp ./*.py $ZSH -r
 cd ..
 rm -rf ATLoader
