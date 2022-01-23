@@ -4,32 +4,23 @@ import os
 from sys import argv, stdout
 from termcolor import colored
 import themeloader
-colors = ['red', 'red']
-
+theme = themeloader.themeloader.gettheme("@-fancy")
+colors = theme.colorset
 my_system = platform
-logo = """
-        ...          
-    .uW8***88e.      
-   d8*"     `"8N.    
- .@8F   .ucu.. %8L   
- @8E  .@8""988  8N   
-'88>  @8~  98F  98   
-~88  X8E   98~  8E   
-'88> 98&  d88  X8    
- %8N '88W@"%8ed*`    
-  %8b. `"   ``       
-   `*8bu.. ..u@      
-      ^"***%"`       
-"""
+logo = f"""{theme.logo}"""
 topline = ""
 logosplt = logo.splitlines()
 counter = 0
 maxlinelen = 0
+NN = f"Node Name: {my_system.node()}"
+AR = f"Arch : {my_system.machine()}"
+OSR = f"OS Release : {my_system.release()}"
+CPU = f"CPU : {platform.processor()}"
 infopanetmp = f"""
-CPU : {platform.processor()}
-OS Release : {my_system.release()}
-Arch : {my_system.machine()}
-Node Name: {my_system.node()}
+{CPU}
+{OSR}
+{AR}
+{NN}
 """
 infosplt = infopanetmp.splitlines()
 for line in infosplt:
@@ -48,6 +39,8 @@ def center(txt):
     center = ""
     for x in range(int(((int(len(topline))-2)-int(len(txt)))/2)):
         center += " "
+    if txt == "CPU : i386":
+        return center + txt + " " + center
     return center + txt + center
 
 
@@ -72,11 +65,11 @@ infopane = f"""
 {topline}
 |{center("@Loader")}|
 |{center("Version 1.0.0")}|
-|{center(f"CPU : {platform.processor()}")} |
-|{center(f"OS Release : {my_system.release()}")}|
-|{center(f"Arch : {my_system.machine()}")}|
+|{center(f"{CPU}")}|
+|{center(f"{OSR}")}|
+|{center(f"{AR}")}|
 |{center(f"System : {my_system.system()}")}|
-|{center(f"Node Name: {my_system.node()}")}|
+|{center(f"{NN}")}|
 |{filler()}|
 {bottomline}
 {vcenter()}

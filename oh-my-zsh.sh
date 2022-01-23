@@ -8,9 +8,8 @@ echo "you can always add custom aliases to the ~/documents/aliasesloader.zsh fil
 alias loadGP="launchctl load /Library/LaunchAgents/com.paloaltonetworks.gp.pangp*"
 alias unloadGP="launchctl unload /Library/LaunchAgents/com.paloaltonetworks.gp.pangp*"
 alias reloadGP="unloadGP && loadGP"
-echo "you can acsess the commands that are added to ohmyzsh with ffhelp"
-alias alhelp="py $ZSH/ALhelp.py"
-alias @loader="py $ZSH/ALhandler.py" 
+echo "you can acsess the commands that are added to ohmyzsh with @ help"
+alias @="py $ZSH/ALhandler.py" 
 
 #END OF HACK
 # Protect against non-zsh execution of Oh My Zsh (use POSIX syntax here)
