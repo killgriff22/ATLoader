@@ -16,12 +16,14 @@ NN = f"Node Name: {my_system.node()}"
 AR = f"Arch : {my_system.machine()}"
 OSR = f"OS Release : {my_system.release()}"
 CPU = f"CPU : {platform.processor()}"
+SYS = f"System : {my_system.system()}"
 infopanetmp = f"""
 {CPU}
 {OSR}
 {AR}
 {NN}
 """
+bottomline = ""
 infosplt = infopanetmp.splitlines()
 for line in infosplt:
     if len(line) <= maxlinelen:
@@ -30,16 +32,15 @@ for line in infosplt:
         maxlinelen = len(line)
     newtopline = ""
     for i in range(maxlinelen+2):
-        newtopline += "_"
-    topline = newtopline
-    bottomline = topline.replace("_", "¯")
+        topline = "_______________________________________________"
+        bottomline = "¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯"
 
 
 def center(txt):
     center = ""
     for x in range(int(((int(len(topline))-2)-int(len(txt)))/2)):
         center += " "
-    if txt == "CPU : i386":
+    if len(txt) % 2 == 0:
         return center + txt + " " + center
     return center + txt + center
 
@@ -68,7 +69,7 @@ infopane = f"""
 |{center(f"{CPU}")}|
 |{center(f"{OSR}")}|
 |{center(f"{AR}")}|
-|{center(f"System : {my_system.system()}")}|
+|{center(F"{SYS}")}|
 |{center(f"{NN}")}|
 |{filler()}|
 {bottomline}
