@@ -4,7 +4,7 @@ import os
 from sys import argv, stdout
 from termcolor import colored
 import themeloader
-theme = themeloader.themeloader.gettheme("@-fancy")
+theme = themeloader.themeloader.gettheme("<3")
 colors = theme.colorset
 my_system = platform
 logo = f"""{theme.logo}"""
