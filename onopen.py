@@ -4,7 +4,7 @@ import os
 from sys import argv, stdout
 from termcolor import colored
 import themeloader
-theme = themeloader.themeloader.gettheme("AE")
+theme = themeloader.themeloader.gettheme("star")
 colors = theme.colorset
 my_system = platform
 logo = f"""{theme.logo}"""
