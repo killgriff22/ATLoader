@@ -4,11 +4,10 @@ import os
 from sys import argv, stdout
 from termcolor import colored
 import themeloader
-theme = themeloader.themeloader.gettheme("<3")
+theme = themeloader.themeloader.gettheme("AE")
 colors = theme.colorset
 my_system = platform
 logo = f"""{theme.logo}"""
-topline = ""
 logosplt = logo.splitlines()
 counter = 0
 maxlinelen = 0
@@ -23,17 +22,14 @@ infopanetmp = f"""
 {AR}
 {NN}
 """
-bottomline = ""
+topline = "_______________________________________________"
+bottomline = "¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯"
 infosplt = infopanetmp.splitlines()
 for line in infosplt:
     if len(line) <= maxlinelen:
         pass
     elif len(line) > maxlinelen:
         maxlinelen = len(line)
-    newtopline = ""
-    for i in range(maxlinelen+2):
-        topline = "_______________________________________________"
-        bottomline = "¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯"
 
 
 def center(txt):
@@ -58,7 +54,7 @@ def vcenter():
         buffer = int((len(logosplt)-len(infosplt))/2)
         for i in range(buffer):
             center += " "
-        return center
+    return center
 
 
 infopane = f"""
