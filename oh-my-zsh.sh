@@ -20,7 +20,7 @@ omz_f() {
 
     # Show process tree
     case "$(uname)" in
-       (Linux) ps -o ppid,pid,command -f -p $pids 2>/dev/null ;;
+       (Linux) ps -o ppid,pid,command -f -p $pids 2>/dev/null ;; 
     (Darwin|*) ps -o ppid,pid,command -p $pids 2>/dev/null ;;
     esac
 
