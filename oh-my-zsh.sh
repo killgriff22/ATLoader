@@ -3,9 +3,6 @@
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
         # Linux or mac we use python3
   python3 ~/.oh-my-zsh/onopen.py
-elif [[ "$OSTYPE" == "darwin"* ]]; then
-        # Mac OSX
-  python3 ~/.oh-my-zsh/onopen.py
 else
         # Unknown. Default to "python"
   python ~/.oh-my-zsh/onopen.py
