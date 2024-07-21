@@ -4,6 +4,14 @@ import os
 from sys import argv, stdout
 from termcolor import colored
 import themeloader
+import socket
+try:
+    s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    s.connect(("8.8.8.8", 80))
+    ip = s.getsockname()[0]
+    s.close()
+except:
+    ip = "No internet connection"
 theme = themeloader.themeloader.gettheme("star")
 colors = theme.colorset
 my_system = platform
@@ -21,15 +29,16 @@ infopanetmp = f"""
 {OSR}
 {AR}
 {NN}
+{ip}
 """
-topline = "_______________________________________________"
-bottomline = "¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯"
 infosplt = infopanetmp.splitlines()
 for line in infosplt:
     if len(line) <= maxlinelen:
         pass
     elif len(line) > maxlinelen:
         maxlinelen = len(line)
+topline = "_"*(maxlinelen+2)
+bottomline = "¯"*(maxlinelen+2)
 
 
 def center(txt):
@@ -67,6 +76,7 @@ infopane = f"""
 |{center(f"{AR}")}|
 |{center(F"{SYS}")}|
 |{center(f"{NN}")}|
+|{center(f"{ip}")}|
 |{filler()}|
 {bottomline}
 {vcenter()}
